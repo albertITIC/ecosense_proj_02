@@ -1,0 +1,199 @@
+/* body{
+    padding: 2%;
+} */
+
+/* Container per el menú */
+.menu{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    background-color: #3E6606;
+}
+
+/* Container de la foto */
+.foto-inicial {
+    width: 10%;
+    height: 20%;
+}
+
+/* Tamany de la foto (resposive) */
+.foto-inicial img{
+    width: 100%;
+    height: 100%;
+}
+
+a{
+    color: white;
+    font-size: 19px;
+    font-size: 25px;
+}
+
+/* Container del menú principal */
+.links {
+    display: flex;
+    justify-content: baseline;
+    gap: 130px;
+}
+
+.links a {
+    position: relative;
+    text-decoration: none; /* Eliminem el subratllat predeterminat */
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Ajustem la distància del subratllat */
+    width: 0;
+    height: 2px; /* Gruix de la línia */
+    background-color: white; /* Color del subratllat */
+    transition: width 0.3s ease-in-out;
+}
+
+.links a:hover::after {
+    width: 100%;
+}
+
+
+/* container dels icones de la dreta (input, carret de la compra i login) */
+.icones{
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    gap: 7px;
+
+}
+/* Animacions per les imatges */
+.icones img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.icones img:hover {
+    transform: scale(1.25);
+}
+
+.buscador {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 250px; /* Amplada del buscador */
+}
+
+.buscador-web {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* Deixem espai per al botó */
+    border: 2px solid white;
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+}
+
+.btn-buscador {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #3E6606;
+}
+
+
+/* Configuració foto login */
+.log-in{
+    width: 100px;
+}
+
+/* Tamany de la foto login (responsive) */
+.log-in img{
+    width: 100%;
+    height: 100%;
+}
+
+/* Configuració foto carret de la compra */
+.carret-compra{
+    width: 90px;
+}
+
+/* Tamany de la foto carret de la compra (responsive) */
+.carret-compra img{
+    width: 100%;
+    height: 100%;
+}
+
+/* Controlar el tamany de la foto */
+.foto-main img{
+    width: 100%;
+    height: 84vh;
+}
+
+.btn-scroll {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #3E6606;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Amagat per defecte */
+    transition: transform 0.3s ease-in-out, opacity 0.3s;
+}
+
+.btn-scroll:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+/* SECCIÓ - QUI SOM */
+.qui-som{
+    padding: 2%;
+}
+
+.contingut-qs{
+    display: flex;
+}
+
+/* Contenedor de equipo */
+/* Sección principal */
+.components-equip {
+    padding: 2%;
+}
+
+/* Contenedor general */
+.info-equip {
+    border-radius: 15px;
+    background-color: #3E6606;
+    color: white;
+    padding: 1.5%;
+    display: flex;
+    gap: 6px;
+}
+
+/* Tarjeta de cada integrante */
+.contingut-asix, .contingut-dam, .contingut-daw {
+    background-color: #8DA36D;
+    padding: 1%;
+    font-size: 16px;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* SECCIÓ - FOOTER */
+.footer{
+    background-color: #f3f3f3;
+    padding: 3%;
+    display: flex;
+    justify-content: space-around;
+}
+

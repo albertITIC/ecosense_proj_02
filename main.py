@@ -1,0 +1,1 @@
+# Fitxer per controlar endpoints

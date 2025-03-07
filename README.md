@@ -1,2 +1,1 @@
-# ecosense_proj_02
-ECOSENSE - Control de versions del projecte 2.
+# projecte-2_0
