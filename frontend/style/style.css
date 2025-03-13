@@ -190,10 +190,16 @@ a{
 
 
 /* SECCIÓ - FOOTER */
-.footer{
+.footer {
     background-color: #f3f3f3;
-    padding: 3%;
     display: flex;
-    justify-content: space-around;
+    padding: 2%;
+    border-radius: 15px;
+    justify-content: space-between;
 }
 
+/* Puedes especificar el tamaño de las imágenes por separado si lo prefieres */
+.footer-img2 , .footer-img1 img {
+    width: 50%;
+    height: 100%;   
+}
