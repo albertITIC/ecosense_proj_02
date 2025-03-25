@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar-se</title>
+    <link rel="stylesheet" href="../style/registrarse.css">
+</head>
+<body>
+    
+    <section class="main">
+        <!-- Imatge principal de tota la pàgina -->
+        <section class="img_principal"></section>
+        <section class="formulari">
+            <h2>Registrar-se</h2>
+            <!-- Apartat del formulari -->
+            <form> 
+                <label for="email">Correu electrónic</label>
+                <input type="email" id="email" name="email" placeholder="Correu electrónic">
+                <br>
+                <br>
+                <section class="pswd-line">
+                    <label for="password">Contrasenya</label> <a href="recuperar_contraseña.html">Recuperar contrasenya</a>
+                </section>
+
+                <input type="password" id="password" name="password" placeholder="Contrasenya">
+                <br>
+                <br>   
+
+                <section class="cont-btns">
+                    <button class="registrarse" type="submit">Registrar-se</button>
+                    <button id="tornar">Tornar</button>
+                </section>
+                <br>
+            </form>
+            <section>
+                <!-- Redireix a l'html de crear un compte -->
+                <a href="">No tens un compte creat?</a>
+            </section>
+        </section>
+    </section>
+
+    <!-- Scritps -->  
+    <script src="../js/registrarse.js"></script>
+
+</body>
+</html>
+

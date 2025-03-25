@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacte</title>
-    <link rel="stylesheet" href="../style/menu.css"> 
-    <link rel="stylesheet" href="../style/contacte.css"> 
+    <title>Les meves plantes</title>
+    <link rel="stylesheet" href="../style/menu.css">
+    <link rel="stylesheet" href="../style/plantes.css">
 </head>
 <body>
     <!-- Imatge de la capçalera (en blanc) -->
     <div class="foto-capçalera">
         <img src="../img/header-retallat.png" alt="Foto logotip en blanc">
     </div>
-    
+
     <!-- Menú pàgina inicial --> 
     <nav class="menu">
         <!-- Foto principal -->
         <div class="foto-inicial">
-            <img src="../img/header.png" alt="Logotip ECOSENSE">    
+            <img src="../img/header.png" alt="Logotip EOSENSE">    
         </div>
         
         <!-- Navegador del menú -->
         <div class="links">
-            <a href="../index.html">Inici</a>
-            <a href="plantes.html">Plantes</a> <!-- Sense '../' perquè ja estàs a /pages/ -->
+            <!-- Connectarà a altres fitxers html per obrirlos -->
+            <a href="../index.html">Qui som</a>
+            <a href="plantes.html">Plantes</a>
             <a href="productes.html">Productes</a>
             <a href="contacte.html">Contacte</a>
         </div>
@@ -37,22 +38,21 @@
 
             <!-- Carret de la compra -->
             <div>
-                <img src="../img/carret-compra.png" alt="Carret de la compra" class="carret-compra">
+            <img src="../img/carret-compra.png" alt="Carret de la compra" class="carret-compra">
             </div>
-
             <!-- Iniciar sessió -->
-            <a href="registrarse.html"> <!-- La ruta correcta dins /pages/ -->
+            <a href="pages/registrarse.html">
                 <img src="../img/login.png" alt="Iniciar sessió" class="log-in">
-            </a>             
+            </a>
+                         
         </div>
     </nav>
 
-    <section>
-        <h1>Contacte</h1>        
+    <section class="main">
+        <h1 class="Titol-principal">Les meves plantes</h1>
     </section>
 
-
- <!-- Script per animar la foto del header -->
+    <!-- Script per animar la foto del header -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const fotoCapcalera = document.querySelector(".foto-capçalera");

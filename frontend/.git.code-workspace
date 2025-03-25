@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.git"
+		},
+		{
+			"path": "../.vscode"
+		},
+		{
+			"path": "../backend"
+		},
+		{
+			"path": "."
+		}
+	]
+}

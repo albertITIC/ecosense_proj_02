@@ -1,4 +1,3 @@
-
 // --------------------------------------------------------------- CONST ---------------------------------------------------------------
 const btnScroll = document.getElementById("btn-scroll-top");
 
@@ -8,15 +7,14 @@ btnScroll.addEventListener("click", () => {
 });
 
 // -------------------------------------------------------------- FUNCIONS --------------------------------------------------------------
-// Funció per pujar de manera automàtica fins a dalt de la primera pàgina    
+// Funció per mostrar el botó abans de la meitat de la pàgina
 window.addEventListener("scroll", () => {
     const scrollHeight = document.documentElement.scrollHeight;
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
 
-    if (scrollTop + clientHeight >= scrollHeight - 100) { 
-        btnScroll.style.display = "block"; 
+    if (scrollTop >= scrollHeight * 0.3) {  // Ara apareixerà al 30% de scroll
+        btnScroll.classList.add("mostrar");
     } else { 
-        btnScroll.style.display = "none"; 
+        btnScroll.classList.remove("mostrar");
     }
 });

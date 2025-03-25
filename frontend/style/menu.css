@@ -1,7 +1,4 @@
-/* body{
-    padding: 2%;
-} */
-
+/* Fitxer css per importar sol la barra del menú de la pàgina inicial */
 /* Container per el menú */
 .menu{
     display: flex;
@@ -123,20 +120,10 @@ a{
     height: 100%;
 }
 
-.foto-main {
-    position: relative;
+/* Controlar el tamany de la foto */
+.foto-main img{
     width: 100%;
-    height: 100vh; /* Ocupa tota la pantalla al principi */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Evita desbordaments */
-}
-
-.foto-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* La imatge s’adapta sense deformar-se */
+    height: 84vh;
 }
 
 .btn-scroll {
@@ -145,87 +132,17 @@ a{
     right: 20px;
     width: 50px;
     height: 50px;
-    background-color: #274004;
+    background-color: #3E6606;
     color: white;
     border: none;
     border-radius: 50%;
     font-size: 24px;
     cursor: pointer;
-    opacity: 0; /* Inicialment ocult */
-    transform: translateY(20px); /* Llevem lleugerament cap avall */
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    pointer-events: none; /* Evita que sigui clicable quan està ocult */
-}
-
-.btn-scroll.mostrar {
-    opacity: 1;
-    transform: translateY(0); /* Torna a la seva posició original */
-    pointer-events: auto; /* Activa el botó quan és visible */
+    display: none; /* Amagat per defecte */
+    transition: transform 0.3s ease-in-out, opacity 0.3s;
 }
 
 .btn-scroll:hover {
     transform: scale(1.2);
     opacity: 0.8;
-}
-
-/* SECCIÓ - QUI SOM */
-.qui-som{
-    padding: 2%;
-}
-
-.contingut-qs{
-    display: flex;
-}
-
-/* Contenedor de equipo */
-/* Sección principal */
-.components-equip {
-    padding: 2%;
-}
-
-/* Contenedor general */
-.info-equip {
-    border-radius: 15px;
-    background-color: #3E6606;
-    color: white;
-    padding: 1.5%;
-    display: flex;
-    gap: 6px;
-}
-
-/* Tarjeta de cada integrante */
-.contingut-asix, .contingut-dam, .contingut-daw {
-    background-color: #8DA36D;
-    padding: 1%;
-    font-size: 16px;
-    border-radius: 15px;
-    margin-top: 10px;
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-
-/* SECCIÓ - FOOTER */
-.footer {
-    background-color: #f3f3f3;
-    display: flex;
-    padding: 1%;    
-    justify-content: center;
-    align-items: center;
-    height: 200px;    
-}
-
-/* Puedes especificar el tamaño de las imágenes por separado si lo prefieres */
-.footer-img2, .footer-img1 img{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 50%;
-    height: 50%;
-}
-
-.div-contacte{
-    padding: 1%;
 }

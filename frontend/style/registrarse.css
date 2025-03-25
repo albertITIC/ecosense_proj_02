@@ -1,0 +1,74 @@
+.main {
+    position: relative; /* Para que los elementos internos se posicionen sobre él */
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/fondoRegistre.jpg'); /* La imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estil per el formulari */
+.formulari {
+    background: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Inputs del formulari */
+.formulari input {
+    width: 94%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Container dels buttons */
+.cont-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Estils pels buttons */
+.formulari button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 130px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Botó Registrar-se */
+.registrarse {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+.registrarse:hover {
+    background-color: #3e8e41;
+}
+
+/* Botó Tornar */
+.tornar {
+    background-color: #d32f2f; /* Rojo oscuro */
+    color: white;
+}
+
+.tornar:hover {
+    background-color: #a82828;
+}
+
+/* Container de les contrassenya */
+.pswd-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
