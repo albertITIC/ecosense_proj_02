@@ -19,3 +19,135 @@
     width: 100%;
     height: 100%;
 }
+
+/* Contingut del main */
+.main{
+    padding: 1%;
+}
+
+/* Títol principal */
+.titol-principal{
+    color: #3E6606;
+    text-decoration: underline;
+    padding: 2%;
+}
+
+/* Titol del nom de la planta */
+.nom-planta{
+    font-size: 20px;
+    color: black;
+}
+
+/* Contingut del primer container */
+.dins-container-1{
+    color: white;
+    display: flex;
+    padding: 2px;
+    gap: 20px;
+}
+
+/* Container de la foto */
+.container-1-foto{
+    width: 500px;
+}
+
+/* Per controlar la foto */
+.container-1-foto img{
+    width: 100%;
+    height: 100%;
+}
+
+.div-btn-planta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-planta{
+    background-color: #64a608;
+    border-radius: 5px;
+    padding: 20%;    
+    color: white;
+    border: 1px solid #64a608;
+}
+
+.btn-planta:hover{
+    background-color: #3E6606;
+    border-radius: 5px;
+    padding: 20%;    
+    color: white;
+    border: 1px solid #3E6606;
+}
+
+.container-1-info{
+    background-color: #3E6606;
+    padding: 3%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}/* Contenedor principal */
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor de cada planta */
+.container-planta {
+    width: 93%;
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Contenido interno */
+.dins-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Imagen de la planta */
+.foto-planta img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+
+/* Información de la planta */
+.info-planta {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+
+
+.descripcio-planta p {
+    font-size: 20px;
+    color: black;
+}
+
+/* Botón */
+.div-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.btn-eliminar {
+    background: rgb(180, 50, 50);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 245px;
+}
+
+.btn-eliminar:hover {
+    background: rgb(155, 7, 7);
+}

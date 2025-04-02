@@ -13,23 +13,22 @@
         <img src="../img/header-retallat.png" alt="Foto logotip en blanc">
     </div>
 
-    <!-- Menú pàgina inicial --> 
+    <!-- Menú pàgina inicial -->
     <nav class="menu">
         <!-- Foto principal -->
         <div class="foto-inicial">
-            <img src="../img/header.png" alt="Logotip EOSENSE">    
+            <img src="../img/header.png" alt="Logotip EOSENSE">
         </div>
-        
+
         <!-- Navegador del menú -->
         <div class="links">
-            <!-- Connectarà a altres fitxers html per obrirlos -->
             <a href="../index.html">Qui som</a>
             <a href="plantes.html">Plantes</a>
             <a href="productes.html">Productes</a>
             <a href="contacte.html">Contacte</a>
         </div>
 
-        <div class="icones">            
+        <div class="icones">
             <!-- Buscador -->
             <div class="buscador">
                 <input type="text" class="buscador-web" placeholder="Cerca aquí...">
@@ -38,37 +37,110 @@
 
             <!-- Carret de la compra -->
             <div>
-            <img src="../img/carret-compra.png" alt="Carret de la compra" class="carret-compra">
+                <img src="../img/carret-compra.png" alt="Carret de la compra" class="carret-compra">
             </div>
             <!-- Iniciar sessió -->
-            <a href="pages/registrarse.html">
+            <a href="registrarse.html">
                 <img src="../img/login.png" alt="Iniciar sessió" class="log-in">
             </a>
-                         
         </div>
     </nav>
 
+    <!-- Títol de la pàgina -->
+    <h1 class="titol-principal">LES MEVES PLANTES</h1>
+
+    <!-- Contingut de tota la pàgina -->
     <section class="main">
-        <h1 class="Titol-principal">Les meves plantes</h1>
+        <!-- Planta 1 -->
+        <section class="container-planta">
+            <section class="dins-container">
+                <!-- Imatge de la planta -->
+                <div class="foto-planta">
+                    <img src="../img/sofia-planta.png" alt="Imatge de la planta registrada">
+                </div>
+
+                <!-- Informació de la planta -->
+                <div class="info-planta">
+                    <div class="nom-planta">
+                        <h3>Nom de la planta:</h3> 
+                        <p>· Sofia</p>
+                    </div>
+
+                    <div>
+                        <!-- Exemple -->
+                        <p class="id_planta"> · ID: 001</p>
+                    </div>
+
+                    <div class="descripcio-planta">
+                        <h3 class="titol-info-planta">Informació de la planta:</h3>                         
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eveniet mollitia harum sequi?
+                            Vero modi molestias mollitia explicabo asperiores voluptate velit
+                        </p>
+                    </div>
+                </div>
+                <!-- Botó per eliminar la planta -->
+                <div class="div-btn">
+                    <button class="btn-eliminar">Eliminar</button>
+                </div>
+            </section>
+        </section>
+
+        <!-- Planta 2 (Nueva) -->
+        <section class="container-planta">
+            <section class="dins-container">
+                <!-- Imatge de la planta -->
+                <div class="foto-planta">
+                    <img src="../img/ryan.jpg" alt="Imatge de la planta registrada">
+                </div>
+
+                <!-- Informació de la planta -->
+                 <!-- D'aquest apartat hauré de extreure l'informació del json (fer fetch) -->
+                <div class="info-planta">
+                    <div class="nom-planta">
+                        <h3>Nom de la planta:</h3> 
+                        <p>· Ryan</p>
+                    </div>
+
+                    <div>
+                        <!-- Exemple -->
+                        <p class="id_planta"> · ID: 002</p>
+                    </div>
+
+                    <div class="descripcio-planta">
+                        <h3 class="titol-info-planta">Informació de la planta:</h3>                         
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eveniet mollitia harum sequi?
+                            Vero modi molestias mollitia explicabo asperiores voluptate velit
+                        </p>
+                    </div>
+                </div>
+                <!-- Botó per eliminar la planta -->
+                <div class="div-btn">
+                    <button class="btn-eliminar">Eliminar</button>
+                </div>
+            </section>
+        </section>
     </section>
 
     <!-- Script per animar la foto del header -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const fotoCapcalera = document.querySelector(".foto-capçalera");
-    
+
             function mostrarFotoCapcalera() {
                 const rect = fotoCapcalera.getBoundingClientRect();
                 const alturaVisible = window.innerHeight || document.documentElement.clientHeight;
-    
+
                 if (rect.top <= alturaVisible - 100) {
                     fotoCapcalera.classList.add("visible");
                 }
             }
-    
+
             window.addEventListener("scroll", mostrarFotoCapcalera);
             mostrarFotoCapcalera(); // Executar per si ja és visible
         });
     </script>
+    <script src="../js/plantes.js"> </script>
 </body>
 </html>
