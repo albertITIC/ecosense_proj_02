@@ -9,116 +9,122 @@
 </head>
 <body>
 
-    <!-- Imatge de la capçalera (en blanc) -->
+    <!-- Imatge de la capçalera -->
     <div class="foto-capçalera">
-        <img src="../img/header-retallat.png" alt="Foto logotip en blanc">
+        <img src="../img/header-retallat.png" alt="Logotip en blanc">
     </div>
 
-    <!-- Menú pàgina inicial --> 
+    <!-- Menú de navegació -->
     <nav class="menu">
-        <!-- Foto principal -->
         <div class="foto-inicial">
             <img src="../img/header.png" alt="Logotip ECOSENSE">    
         </div>
         
-        <!-- Navegador del menú -->
         <div class="links">
             <a href="../index.html">Inici</a>
-            <a href="plantes.html">Plantes</a> <!-- Sense '../' perquè ja estàs a /pages/ -->
+            <a href="plantes.html">Plantes</a> 
             <a href="productes.html">Productes</a>
             <a href="contacte.html">Contacte</a>
         </div>
 
         <div class="icones">            
-            <!-- Buscador -->
             <div class="buscador">
                 <input type="text" class="buscador-web" placeholder="Cerca aquí...">
                 <button class="btn-buscador">🔍</button>
             </div>
 
-            <!-- Carret de la compra -->
             <div>
                 <img src="../img/carret-compra.png" alt="Carret de la compra" class="carret-compra">
             </div>
 
-            <!-- Iniciar sessió -->
-            <a href="registrarse.html"> <!-- La ruta correcta dins /pages/ -->
+            <a href="registrarse.html"> 
                 <img src="../img/login.png" alt="Iniciar sessió" class="log-in">
             </a>             
         </div>
     </nav>
 
-    <!-- Títol de la pàgina -->
     <section class="titol-principal">
-        <h1>Productes</h1>        
+        <h1>PRODUCTES</h1>        
     </section>
 
-    <!-- Seccions on es trobarà tots els productes -->
-    <section class="seccio-1">
-        <!-- Títol del producte -->
-         <h1>  Pack (Sensor YL-69 + Software):</h1>
-    
-        <!-- Subtítol del producte -->
-         <h2>Descripció: </h2>
-         
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi explicabo ipsa mollitia necessitatibus doloribus tempora facere aperiam,
-            architecto nostrum a enim quod eius saepe consectetur exercitationem porro error maiores officiis?</p>
+    <section class="seccio-producte">
+        <!-- Imatge del producte -->
+        <div class="container-foto-producte">
+            <img src="../img/pack-ecosense.png" alt="Sensor YL-69 + software">
+        </div>
+        <br>
+        <!-- Descripció del producte -->
+        <div class="descripcio-producte">
+            <h1>Pack (Sensor YL-69 + Software)</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.  error maiores officiis?</p>
+            <h2>Preu: 2,15€</h2>     
+        </div>
 
+        <!-- Botons -->
+        <div class="botons-producte">
+            <button>Comprar</button>
+            <button>Afegir al carret de la compra</button>         
+        </div>
+    </section>
+    <br>
+    <section class="seccio-producte">
+        <!-- Imatge del producte -->
+        <div class="container-foto-producte">
+            <img src="../img/sensor.png" alt="Sensor YL-69 + software">
+        </div>
+        <br>
+        <!-- Descripció del producte -->
+        <div class="descripcio-producte">
+            <h1>Sensor YL-69</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.  error maiores officiis?</p>
+            <h2>Preu: 2,15€</h2>     
+        </div>
 
-        <!-- Capsa del preu + quantitats -->
-         <section class="preu-producte">
-            <h2>Preu: 2,15€</h2>
+        <!-- Botons -->
+        <div class="botons-producte">
+            <button>Comprar</button>
+            <button>Afegir al carret de la compra</button>         
+        </div>
+    </section>
+    <br>
+    <section class="seccio-producte">
+        <!-- Imatge del producte -->
+        <div class="container-foto-producte">
+            <img src="../img/arduino.png" alt="Sensor YL-69 + software">
+        </div>
+        <br>
+        <!-- Descripció del producte -->
+        <div class="descripcio-producte">
+            <h1>Software</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.  error maiores officiis?</p>
+            <h2>Preu: 2,15€</h2>     
+        </div>
 
-            <!-- Comprar ja -->
-            <button>
-                Comprar
-            </button>
-            
-            <!-- Afegir al carret de la compra -->
-             <button>
-                Afegir al carret de la compra
-             </button>
-         
-         </section>
-
-         <!-- Botons per confirmar i afegir carret -->
-         <section>
-            <!-- Imatge del producte -->
-              <div class="container-foto-produdcte">
-                <img src="/img/pack-ecosense.png" alt="Producte sensor YL-69 + software">
-              </div>
-        </section>
-
-
-
+        <!-- Botons -->
+        <div class="botons-producte">
+            <button>Comprar</button>
+            <button>Afegir al carret de la compra</button>         
+        </div>
     </section>
 
-    <section class="seccio-2">
-
-    
-    </section>
-
-    <section class="seccio-3">
-
-    </section>
-
-     <!-- Script per animar la foto del header -->
-     <script>
+    <!-- Script per animar la foto del header -->
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
             const fotoCapcalera = document.querySelector(".foto-capçalera");
-    
+
             function mostrarFotoCapcalera() {
                 const rect = fotoCapcalera.getBoundingClientRect();
                 const alturaVisible = window.innerHeight || document.documentElement.clientHeight;
-    
+
                 if (rect.top <= alturaVisible - 100) {
                     fotoCapcalera.classList.add("visible");
                 }
             }
-    
+
             window.addEventListener("scroll", mostrarFotoCapcalera);
             mostrarFotoCapcalera(); // Executar per si ja és visible
         });
     </script>
+
 </body>
 </html>

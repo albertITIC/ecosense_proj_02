@@ -1,3 +1,4 @@
+/* -------------------- FOTO CAPÇALERA -------------------- */
 .foto-capçalera {
     width: 15%;
     display: flex;
@@ -5,11 +6,10 @@
     justify-content: center;
     margin: 0 auto;
     opacity: 0; /* Inicialment invisible */
-    transform: translateX(-100vw); /* Comença totalment fora de la pantalla (esquerra) */
+    transform: translateX(-100vw); /* Comença fora de la pantalla (esquerra) */
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* Quan la classe "visible" s'afegeixi, la imatge es mourà al centre */
 .foto-capçalera.visible {
     opacity: 1;
     transform: translateX(0);
@@ -17,63 +17,117 @@
 
 .foto-capçalera img {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
-/* Títol principal */
-.titol-principal{
+/* -------------------- TÍTOL PRINCIPAL -------------------- */
+.titol-principal {
     color: #3E6606;
     text-decoration: underline;
     padding: 2%;
-}   
+    font-size: 20px;
+}
 
-/* Contenedor principal del producto */
-.seccio-1 {
+/* -------------------- SECCIÓ DEL PRODUCTE AMB GRID AREAS -------------------- */
+.seccio-producte {
     background-color: #d8decd;
     border-radius: 15px;
     padding: 2%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajuste flexible */
-    gap: 20px; /* Espacio entre columnas */
+    grid-template-columns: 20% 40% 40%;
+    grid-template-areas: "foto text text"; 
+    gap: 20px;
     align-items: center;
 }
 
-/* Texto de descripción */
-.seccio-1 h1, .seccio-1 h2, .seccio-1 p {
-    margin: 0;
+/* Contenidor de la imatge */
+.container-foto-producte {
+    grid-area: foto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Contenedor del precio y botones */
-.preu-producte {
+.container-foto-producte img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+}
+
+/* Contenidor del text */
+.descripcio-producte {
+    grid-area: text; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.descripcio-producte h1, .descripcio-producte h2, .descripcio-producte p {
+    margin: 0 0 10px 0;
+}
+
+/* -------------------- SECCIÓ DEL PRODUCTE AMB GRID AREAS -------------------- */
+.seccio-producte {
+    background-color: #d8decd;
+    border-radius: 15px;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    grid-template-areas: 
+        "foto text botons"; 
+    gap: 20px;
+    align-items: center;
+}
+
+/* Contenidor de la imatge */
+.container-foto-producte {
+    grid-area: foto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-foto-producte img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+}
+
+/* Contenidor del text */
+.descripcio-producte {
+    grid-area: text; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.descripcio-producte h1, .descripcio-producte h2, .descripcio-producte p {
+    margin: 10px;
+}
+
+/* -------------------- BOTONS -------------------- */
+.botons-producte {
+    grid-area: botons;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-items: center;
+    justify-content: center;
+}
+
+.botons-producte button {
     background-color: #3E6606;
     color: white;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.preu-producte button {
-    background-color: #8A9A5B;
-    color: white;
     border: none;
-    padding: 10px;
-    margin: 5px;
+    padding: 20px;
+    font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+    width: 80%;
 }
 
-/* Contenedor de la imagen del producto */
-.container-foto-produdcte {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    width: 100%;
-    height: 100%;
-}
-
-/* Imagen del producto */
-.container-foto-produdcte img {
-    max-width: 100%; /* Para que la imagen no se salga del contenedor */
-    max-height: 100%; /* Ajusta la altura máxima */
-    border-radius: 10px;
+.botons-producte button:hover {
+    background-color: #8A9A5B;
 }
