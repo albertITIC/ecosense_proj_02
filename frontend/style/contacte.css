@@ -19,3 +19,57 @@
     width: 100%;
     height: 100%;
 }
+
+.titol-principal {
+    color: #3E6606;
+    text-decoration: underline;
+    padding: 2%;
+    font-size: 30px;
+}
+
+/* Apartat del formulari */
+/* Contenidor principal del formulari */
+.contacte-formulari {
+    padding: 2%;
+    border-radius: 15px;
+    background-color: #53870a;
+    color: white;
+    width: 50%;  /* Fes-lo més estret */
+    margin: 0 auto;  /* Centra'l horitzontalment */
+    font-size: 25px;
+}
+
+/* Ajust del formulari */
+#formulari {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+
+/* Ajust dels inputs */
+#formulari input, #formulari textarea {
+    width: 100%; 
+    margin-bottom: 10px;  
+    font-size: 35px;
+}
+
+/* Button */
+.enviar{
+    background-color: #3e660600;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 75%;
+}
+
+/* Button animació (hover) */
+.enviar:hover{
+    color: white;
+    border: 1px solid white;
+    background-color: #5e931400;
+    border-radius: 5px;
+    font-size: 75%;
+    cursor: pointer;
+}   
+

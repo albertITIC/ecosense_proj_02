@@ -47,10 +47,29 @@
         </div>
     </nav>
 
+    <!-- Titol de la pàgina -->
     <section>
-        <h1>Contacte</h1>        
+        <b><h1 class="titol-principal">CONTACTE</h1></b>        
     </section>
 
+    <!-- Apartat del formulari -->
+     <section class="contacte-formulari">
+        <form id="formulari">
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" required>
+            <br>
+        
+            <label for="email">Correu electrònic:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+
+            <label for="missatge">Missatge:</label>
+            <textarea id="missatge" name="missatge" required></textarea>
+            
+            <br>
+            <button type="submit" class="enviar">Enviar</button>
+        </form>
+    </section>
 
  <!-- Script per animar la foto del header -->
     <script>
