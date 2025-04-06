@@ -146,3 +146,26 @@ a{
     transform: scale(1.2);
     opacity: 0.8;
 }
+
+/* SECCIÓ - FOOTER */
+.footer {
+    background-color: #f3f3f3;
+    display: flex;
+    padding: 1%;    
+    justify-content: center;
+    align-items: center;
+    height: 200px;    
+}
+
+/* Puedes especificar el tamaño de las imágenes por separado si lo prefieres */
+.footer-img2, .footer-img1 img{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    height: 50%;
+}
+
+.div-contacte{
+    padding: 1%;
+}
