@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar contrasenya</title>
     <link rel="stylesheet" href="../style/registrarse.css">
+    <link rel="stylesheet" href="../style/recuperar-contrasenya.css">
+
 </head>
 <body>
         <!-- Foto ecosense -->
@@ -16,22 +18,20 @@
             <!-- Imatge principal de tota la pàgina -->
             <section class="img_principal"></section>
             <section class="formulari">
-                <h2 class="titol-form">Iniciar sessió</h2>
+                <h2 class="titol-form">Recuperar contrasenya</h2>
+                
                 <!-- Apartat del formulari -->
                 <form> 
-                    <label for="email">Correu electrónic</label>
+                    <label for="email"><b>Correu electrónic</b></label>
                     <input type="email" id="email" name="email" placeholder="Correu electrónic">
                     <br>
                     <br>
-    
-                    <input type="password" id="password" name="password" placeholder="Contrasenya">
-                    <br>
-                    <br>   
-    
+                    <p class="info-email"> Introdueix el correu més recent per fer-te arribar un codi de confirmació</p>
                     <section class="cont-btns">
-                        <button class="registrarse" type="submit">Registrar-se</button>
+                        <button class="registrarse" type="submit">Recuperar contrasenya</button>
                         <button id="tornar">Tornar</button>
                     </section>
+                    <br>
                     <br>
                 </form>
                 <section>
@@ -40,5 +40,8 @@
                 </section>
             </section>
         </section>
-</body>
+
+        <!-- Scripts -->
+         <script src="../js/contrasenya-recuperada.js"></script>
+    </body>
 </html>

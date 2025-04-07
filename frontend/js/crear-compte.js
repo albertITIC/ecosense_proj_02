@@ -7,6 +7,6 @@ btnTornar.addEventListener("click", tornarIndex);
 
 // --------------------------- FUNCIONS --------------------------- 
 function tornarIndex() {
-    window.location.href = "../index.html";
-    console.log("Tornant al inici...")
+    window.location.href = "../pages/registrarse.html";
+    console.log("Tornant a iniciar sessió...")
 }

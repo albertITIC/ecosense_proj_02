@@ -7,6 +7,6 @@ btnTornar.addEventListener("click", tornarIndex);
 
 // --------------------------- FUNCIONS --------------------------- 
 function tornarIndex() {
-    window.location.href = "../index.html";
+    window.location.href = "../pages/contrasenya-recuperada.html";
     console.log("Tornant al inici...")
 }

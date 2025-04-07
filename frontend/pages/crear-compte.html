@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear compte nou</title>
+    <link rel="stylesheet" href="../style/registrarse.css">
+</head>
+<body>
+    <!-- Foto ecosense -->
+    <div class="foto-ecosense">
+        <img src="../img/logo-ecosense-registre.png" alt="Foto ecosense en blanc">
+    </div>
+
+    <section class="main">
+        <!-- Imatge principal de tota la pàgina -->
+        <section class="img_principal"></section>
+
+        <section class="formulari">
+            <h2 class="titol-form">Crear compte nou</h2>
+
+            <form>
+                <!-- Nom -->
+                <label for="nom"><b>Nom</b></label>
+                <input type="text" id="nom" name="nom" placeholder="Nom" required>
+                <br><br>
+
+                <!-- Cognom -->
+                <label for="cognom"><b>Cognom</b></label>
+                <input type="text" id="cognom" name="cognom" placeholder="Cognom" required>
+                <br><br>
+
+                <!-- Correu electrònic -->
+                <label for="email"><b>Correu electrònic</b></label>
+                <input type="email" id="email" name="email" placeholder="Correu electrònic" required>
+                <br><br>
+
+                <!-- Contrasenya -->
+                <label for="contrasenya"><b>Contrasenya</b></label>
+                <input type="password" id="contrasenya" name="contrasenya" placeholder="Contrasenya" required>
+                <br><br>
+
+                <!-- Repetir contrasenya -->
+                <label for="repetir-contrasenya"><b>Repeteix la contrasenya</b></label>
+                <input type="password" id="repetir-contrasenya" name="repetir-contrasenya" placeholder="Repeteix la contrasenya" required>
+                <br><br>
+
+                <!-- Info -->
+                <p class="info-registre">Crea't un compte per aprofitar-te de tots els beneficis del compte de client d'ECOSENSE</p>
+
+                <!-- Botons -->
+                <section class="cont-btns">
+                    <button class="registrarse" type="submit">Crear</button>
+                    <button id="tornar" type="button">Tornar</button>
+                </section>
+                <br>
+            </form>
+        </section>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/crear-compte.js"></script>
+</body>
+</html>

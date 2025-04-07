@@ -26,6 +26,7 @@
 .titol-form, .creacio-compte{
     display: flex;
     justify-content: center;
+    text-decoration: underline;
 }
 
 /* Estil per el formulari */
@@ -35,6 +36,10 @@
     border-radius: 10px;
     width: 350px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 /* Inputs del formulari */
@@ -43,6 +48,11 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.info-registre{
+    font-size: 15px;
+    font-style: italic;
 }
 
 /* Container dels buttons */
@@ -64,9 +74,9 @@
     text-align: center;
 }
 
-/* Botó Registrar-se */
+/* Botó Registrar-se i recuprear contrasenya*/
 .registrarse {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     color: white;
 }
 
@@ -90,3 +100,5 @@
     justify-content: space-between;
     align-items: center;
 }
+
+
