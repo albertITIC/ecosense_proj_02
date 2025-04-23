@@ -1,12 +1,11 @@
-// --------------------------- OBJECTES --------------------------- 
-const btnTornar = document.getElementById("tornar");
-// console.log(btnTornar)
+document.addEventListener("DOMContentLoaded", function () {
+    const btnRegister = document.getElementById("registrarse");
 
-// --------------------------- EVENTS --------------------------- 
-btnTornar.addEventListener("click", tornarIndex);
-
-// --------------------------- FUNCIONS --------------------------- 
-function tornarIndex() {
-    window.location.href = "../pages/contrasenya-recuperada.html";
-    console.log("Tornant al inici...")
-}
+    if (btnRegister) {
+        btnRegister.addEventListener("click", function () {
+            // Aquí pots posar validació de correu, si vols
+            window.location.href = "../pages/contrasenya-recuperada.html";
+            console.log("Redirigint a contrasenya recuperada...");
+        });
+    }
+});
