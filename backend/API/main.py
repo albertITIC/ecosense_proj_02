@@ -1,15 +1,20 @@
+from typing import List
 from fastapi import FastAPI, HTTPException
+import db_plantes
 from db_plantes import db_client
 from pydantic import BaseModel
+from schemas import humitat_sol, planta, sensors, usuaris
+
 
 # Importo les querys
 from db_plantes import read_plantes, read_planta_id
-from db_plantes import read_usuaris, read_usuari_id
+from db_plantes import get_usuaris, read_usuari_id
 from db_plantes import read_sensors, read_sensors_id
-from db_plantes import read_humitatSol, read_humitatSol_id
+from db_plantes import get_humitat, read_humitatSol_id
 
 app = FastAPI()
 
+# --------------------------------- MODELS ---------------------------------
 # Creació de les taules BaseModel
 class humitat_sol(BaseModel):
     id: int
@@ -35,8 +40,10 @@ class usuaris(BaseModel):
     email: str
     contrasenya: str
     sensor_id: int
+# --------------------------------- /MODELS ---------------------------------
 
 
+# --------------------------------- GETS INICIALS ---------------------------------
 # Endpoint inicial
 @app.get("/")
 def index():
@@ -51,41 +58,74 @@ def prova_connexio():
         return {"connexio": "correcta"}
     except Exception as e:
         return {"error": str(e)}
+# --------------------------------- /GETS INICIALS ---------------------------------
 
+# --------------------------------- PLANTES ---------------------------------
+# ---------------- SELECT PLANTES ----------------
 # Llegim totes les plantes
-@app.get("/plantes")
-def get_plantes():
-    plantes = read_plantes()
+@app.get("/plantes/list", response_model=List[dict])
+def read_all_plantes():
+    try:
+        plantes = db_plantes.read_plantes()
 
-    # Condicional que ens serveix per controlar errors
-    if isinstance(plantes, dict) and plantes.get("status") == -1:
-        return {"error": plantes["message"]}
+        if isinstance(plantes, dict) and plantes.get("status") == -1:
+            raise HTTPException(
+                status_code=500,
+                detail=plantes["message"]
+            )
 
-    return {"plantes": plantes}
+        columns = ["id", "nom", "sensor_id"]
+        plantes_list = [dict(zip(columns, planta)) for planta in plantes]
 
-# Llegim UNA planta en concret, agafem l'id
-@app.get("/plantes/{planta_id}")
-def get_planta_id(planta_id: int):
-    planta = read_planta_id(planta_id)
+        return [{"plantes": plantes_list}]
 
-    if planta is None:
-        return {"error": f"No s'ha trobat cap planta amb ID {planta_id}"}, 404
-    elif isinstance(planta, dict) and planta.get("status") == -1:
-        return {"error": planta["message"]}, 500
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error interno del servidor: {str(e)}"
+        )
 
-    return {"planta": planta}
+
+# Llegim UNA planta en concret, passo l'id
+@app.get("/plantes/{id}", response_model=List[dict])
+def read_planta(id: int):
+    try:
+        planta = read_planta_id(id)
+        if planta is None:
+            raise HTTPException(status_code=404, detail="Planta no trobada")
+
+        return [{"planta": planta}]
+
+    except Exception as e:
+        return {"status": -1, "msg": f"Error ocurred: {e}"}
+# ---------------- /SELECT PLANTES ----------------
+
+# ---------------- CREATE PLANTES ----------------
+
+# ---------------- /CREATE PLANTES ----------------
+
+
+# ---------------- UPDATE PLANTES----------------
+
+# ---------------- /UPDATE PLANTES ----------------
+
+
+
+# --------------------------------- /PLANTES ---------------------------------
+
+# --------------------------------- USUARIS ---------------------------------
+# ---------------- SELECT USUARIS ----------------
 
 # Mostrem tots els Usuaris
 @app.get("/usuaris")
-def get_usuaris():
-    usuaris = read_usuaris()
-
-    if isinstance(usuaris, dict) and usuaris.get("status") == -1:
-        return {"error": usuaris["message"]}
-
+def llegir_usuaris():
+    usuaris = get_usuaris()
     return {"usuaris": usuaris}
 
-# Mostrem els Usuaris per id
+
+# # Mostrem els Usuaris per id
 @app.get("/usuaris/{usuari_id}")
 def get_usuari_id(usuari_id: int):
     usuari = read_usuari_id(usuari_id)
@@ -96,50 +136,83 @@ def get_usuari_id(usuari_id: int):
         return {"error": usuari["message"]}, 500
 
     return {"usuari": usuari}
+# ---------------- /SELECT USUARIS ----------------
 
 
-# Mostrem els sensors (?) - hauria de ser productes
-@app.get("/sensors")
-def get_sensors():
-    sensors = read_sensors()
+# ----------------  CREATE USUARIS ----------------
 
-    if isinstance(sensors, dict) and sensors.get("status") == -1:
-        return {"error": sensors["message"]}
+# ---------------- /CREATE USUARIS ----------------
 
-    return {"sensors": sensors}
+# ---------------- UPDATE USUARIS ----------------
 
-# Mostro els Sensors per id
-@app.get("/sensors/{sensor_id}")
-def get_sensor_id(sensor_id: int):
-    sensor = read_sensors_id(sensor_id)
+# ---------------- /UPDATE USUARIS ----------------
 
-    if sensor is None:
-        return {"error": f"No s'ha trobat cap sensor amb ID {sensor_id}"}, 404
-    elif isinstance(sensor, dict) and sensor.get("status") == -1:
-        return {"error": sensor["message"]}, 500
 
-    return {"sensor": sensor}
+# --------------------------------- /USUARIS ---------------------------------
 
+# --------------------------------- SENSORS ---------------------------------
+# # Mostrem els sensors (?) - hauria de ser productes
+# @app.get("/sensors")
+# def get_sensors():
+#     sensors = read_sensors()
+#
+#     if isinstance(sensors, dict) and sensors.get("status") == -1:
+#         return {"error": sensors["message"]}
+#
+#     return {"sensors": sensors}
+#
+# # Mostro els Sensors per id
+# @app.get("/sensors/{sensor_id}")
+# def get_sensor_id(sensor_id: int):
+#     sensor = read_sensors_id(sensor_id)
+#
+#     if sensor is None:
+#         return {"error": f"No s'ha trobat cap sensor amb ID {sensor_id}"}, 404
+#     elif isinstance(sensor, dict) and sensor.get("status") == -1:
+#         return {"error": sensor["message"]}, 500
+#
+#     return {"sensor": sensor}
+
+# ----------------  CREATE SENSORS ----------------
+
+# ---------------- /CREATE SENSORS ----------------
+
+# ---------------- UPDATE SENSORS ----------------
+
+# ---------------- /UPDATE SENSORS ----------------
+
+# --------------------------------- /SENSORS ---------------------------------
+
+
+# --------------------------------- HUMITATS ---------------------------------
+# ---------------- SELECT HUMITATS ----------------
 # Mostro totes les humitats
 @app.get("/humitats")
-def get_humitats():
-    humitat = read_humitatSol()
+def llegir_humitats():
+    humitats = get_humitat()
+    return {"humitats": humitats}
 
-    if humitat is None:
-        return {"error": f"No s'ha trobat cap humitat registrada"}, 404
-    elif isinstance(humitat, dict) and humitat.get("status") == -1:
-        return {"error": humitat["message"]}, 500
 
-    return {"humitat":humitat}
+# Mostro les humitats i valor
+@app.get("/humitats/valor")
+def llegir_valors_humitat():
+    valors = db_plantes.get_valors_humitat()
+    return {"valors": valors}
 
 # Mostro les humitats per la seva id
-@app.get("/humitat-sol/{humitat_id}")
-def get_humitat_sol_id(humitat_id: int):
-    humitat = read_humitatSol_id(humitat_id)
+@app.get("/humitat/{id}")
+def get_humitat_sol_id(id: int):
+    humitat = read_humitatSol_id(id)
 
     if humitat is None:
-        return {"error": f"No s'ha trobat humitat amb ID {humitat_id}"}, 404
+        return {"error": f"No s'ha trobat humitat amb ID {id}"}, 404
     elif isinstance(humitat, dict) and humitat.get("status") == -1:
         return {"error": humitat["message"]}, 500
 
     return {"humitat": humitat}
+# ---------------- /SELECT HUMITATS ----------------
+# --------------------------------- /HUMITATS ---------------------------------
+
+# --------------------------------- POST ---------------------------------
+# -------------------------------- DELETE---------------------------------
+# -------------------------------- UPDATE --------------------------------

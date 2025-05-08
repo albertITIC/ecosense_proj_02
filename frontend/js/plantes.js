@@ -16,4 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-                        
+
+// Funció fetch al endpoint a la base de dades
+function buscarPlanta(){
+    variable = fetch("").json
+
+    dades = variable.email
+
+}

@@ -2,7 +2,7 @@ from client import db_client
 def connectar():
     return db_client()
 
-
+# ----------------------------------- SELECT TAULA PLANTA -----------------------------------
 def read_plantes():
     try:
         conn = db_client()
@@ -10,7 +10,6 @@ def read_plantes():
         cur.execute("SELECT * FROM planta")
         rows = cur.fetchall()
 
-        # Definim els noms de les columnes de la meva taula (això ho faig perquè la sortida per pantalla sigui més clara)
         columns = ["id", "nom", "sensor_id"]
         plantes = [dict(zip(columns, row)) for row in rows]
 
@@ -23,45 +22,39 @@ def read_plantes():
 
     return plantes
 
-# Retorno una planta buscada per id
-def read_planta_id(planta_id: int):
+# Llegeixo sol la planta buscada per id
+def read_planta_id(id):
     try:
         conn = db_client()
         cur = conn.cursor()
-
         query = "SELECT * FROM planta WHERE id = %s"
-        cur.execute(query, (planta_id,))
-        result = cur.fetchone()
+        value = (id,)
+        cur.execute(query, value)
 
-        if result is None:
-            return None
-
-        columns = ["id", "nom", "sensor_id"]
-        planta = dict(zip(columns, result))
-
-        return planta
+        planta = cur.fetchone()
 
     except Exception as e:
-        print(f"Error de connexió: {e}")
-        return {"status": -1, "message": f"Error de connexió: {e}"}
+        return {"status": -1, "message": f"Error de connexió:{e}"}
 
     finally:
         conn.close()
 
+    return planta
+# ----------------------------------- /SELECT TAULA PLANTA -----------------------------------
+
+
+# ----------------------------------- SELECT TAULA USUARIS -----------------------------------
 # Mostra tots els usuaris
-def read_usuaris():
+def get_usuaris():
     try:
         conn = db_client()
         cur = conn.cursor()
-
-        query = "SELECT * FROM usuaris"
-        cur.execute(query)
+        cur.execute("SELECT id_usuari, nom, cognom, email, contrasenya, sensor_id FROM usuaris")
         rows = cur.fetchall()
 
-        columns = ["usuari_id", "nom", "cognom", "email", "email", "contrasenya", "sensor_id"]
+        # Claus per JSON
+        columns = ["id_usuari", "nom", "cognom", "email", "contrasenya", "sensor_id"]
         usuaris = [dict(zip(columns, row)) for row in rows]
-
-        return usuaris
 
     except Exception as e:
         print(f"Error de connexió: {e}")
@@ -70,32 +63,30 @@ def read_usuaris():
     finally:
         conn.close()
 
+    return usuaris
+
 # Mostra els usuaris per id
-def read_usuari_id(usuari_id: int):
+def read_usuari_id(id):
     try:
         conn = db_client()
         cur = conn.cursor()
-
         query = "SELECT * FROM usuaris WHERE id_usuari = %s"
-        cur.execute(query, (usuari_id,))
-        result = cur.fetchone()
+        value = (id,)
+        cur.execute(query, value)
 
-        if result is None:
-            return None
-
-        columns = ["id_usuari", "nom", "cognom", "email", "email", "contrasenya", "sensor_id"]
-        usuari = dict(zip(columns, result))
-
-        return usuari
+        usuari = cur.fetchone()
 
     except Exception as e:
-        print(f"Error de connexió: {e}")
-        return {"status": -1, "message": f"Error de connexió: {e}"}
+        return {"status": -1, "message": f"Error de connexió:{e}"}
 
     finally:
         conn.close()
 
+    return usuari
+# ----------------------------------- /SELECT TAULA USUARIS -----------------------------------
 
+
+# ----------------------------------- SELECT TAULA SENSORS -----------------------------------
 # Mostro els sensors (productes?)
 def read_sensors():
     try:
@@ -142,24 +133,20 @@ def  read_sensors_id(sensor_id: int):
 
     finally:
         conn.close()
+# ----------------------------------- /SELECT TAULA SENSORS -----------------------------------
 
+
+# -----------------------------------  SELECT TAULA HUMITAT_SOL -----------------------------------
 # Mostro les humitats de cada sensor
-def read_humitatSol():
+def get_humitat():
     try:
         conn = db_client()
         cur = conn.cursor()
-        query = "SELECT * FROM humitat_sol"
-        cur.execute(query)
-
+        cur.execute("SELECT * FROM humitat_sol")
         rows = cur.fetchall()
 
-        if not rows:  # Més correcte que 'is None' per a fetchall()
-            return None
-
         columns = ["id", "sensor_id", "valor", "timestamp"]
-        humitats = [dict(zip(columns, row)) for row in rows]  # Llista de diccionaris
-
-        return humitats
+        humitats = [dict(zip(columns, row)) for row in rows]
 
     except Exception as e:
         print(f"Error de connexió: {e}")
@@ -168,12 +155,33 @@ def read_humitatSol():
     finally:
         conn.close()
 
-# Mostro les humitats de cada sensor per id
+    return humitats
+
+
+def get_valors_humitat():
+    try:
+        conn = db_client()
+        cur = conn.cursor()
+        cur.execute("SELECT valor FROM humitat_sol") # Sol agafo el valor
+        rows = cur.fetchall()
+
+        valors = [row[0] for row in rows]  # Només extreiem el valor (float)
+
+    except Exception as e:
+        print(f"Error de connexió: {e}")
+        return {"status": -1, "message": f"Error de connexió: {e}"}
+
+    finally:
+        conn.close()
+
+    return valors
+
+# Mostro les humitats de cada sensor per idl
 def read_humitatSol_id(humitatSol_id: int):
     try:
         conn = db_client()
         cur = conn.cursor()
-        query = "SELECT * FROM humitat_sol WHERE id = %s"
+        query = "SELECT * FROM humitat_sol WHERE id=%s"
 
         cur.execute(query, (humitatSol_id,))
         result = cur.fetchone()
@@ -192,3 +200,7 @@ def read_humitatSol_id(humitatSol_id: int):
 
     finally:
         conn.close()
+
+# -----------------------------------  /SELECT TAULA HUMITAT_SOL -----------------------------------
+
+# ------------------------------------- CREATE -----------------------------------
