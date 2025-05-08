@@ -1,0 +1,1 @@
+# Funciones schema: transforma JSON de planta
