@@ -24,3 +24,18 @@ def get_all_sensors():
         return dades
 
     return dades.get("sensors", [])
+
+
+
+# Test
+from client import get_json_data
+
+# Funció que retorna les plantes per usuari
+def get_plantes_by_usuari(usuari_id: int):
+    dades = get_json_data()
+    if dades.get("status") == -1:
+        return dades
+
+    plantes = dades.get("planta", [])
+    return [p for p in plantes if p.get("usuari_id") == usuari_id]
+

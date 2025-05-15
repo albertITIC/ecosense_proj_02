@@ -1,26 +1,11 @@
 import requests
 
-# URL del endpoint
-URL = "http://18.213.199.248:8000"
-
-
+# Funció per fer la petició GET al servidor remot
 def get_json_data():
     try:
-        # Hacer la petición al servidor
-        response = requests.get(URL)
-
-        # Verificar si la respuesta es correcta
-        response.raise_for_status()  # Lanza error si el estado no es 200
-
-        # Devolver los datos JSON si la solicitud es exitosa
+        url = "http://18.213.199.248:5000/consultar_dades"  # Aquí poses l'URL real
+        response = requests.get(url)
+        response.raise_for_status()  # Llença error si el codi de resposta és 4xx o 5xx
         return response.json()
-
-    except requests.RequestException as e:
-        # Manejo de excepciones en caso de error en la solicitud
-        return {"status": -1, "msg": f"Error en la petición: {e}"}
-
-
-# Prueba de la función (opcional)
-if __name__ == "__main__":
-    data = get_json_data()
-    print(data)
+    except Exception as e:
+        return {"status": -1, "message": str(e)}

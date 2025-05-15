@@ -1,7 +1,7 @@
 # Ficher que controla la Taula d'usuaris
 def usuari_schema(usuari) -> dict:
     return {
-        "id_usuari": usuari[0],
+        "id": usuari[0],
         "nom": usuari[1],
         "cognom": usuari[2],
         "email": usuari[3],

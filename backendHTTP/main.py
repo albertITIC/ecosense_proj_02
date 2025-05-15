@@ -8,7 +8,6 @@ from routers.sensors import sensors_schema
 
 app = FastAPI()
 
-
 @app.get("/")
 def index():
     return {"Missatge": "Benvingut a l'API Ecosense"}
@@ -23,3 +22,11 @@ def plantes_per_usuari(usuari_id: int):
 def llistar_sensors():
     dades = get_all_sensors()
     return sensors_schema(dades)
+
+
+# Endpoint de prova
+@app.get("/test-dades")
+def test_connexio():
+    from client import get_json_data
+    dades = get_json_data()
+    return dades
