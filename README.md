@@ -30,7 +30,9 @@ Comanda per arrancar el contenidor docker:
 ![Projecte amb pgAdmin 4](image-4.png)
 
 
-
+## Encriptació de contrassenyes - bycrypt 
+Primer de tot instalar-lo:
+![img_1.png](img_1.png)
 
 
 

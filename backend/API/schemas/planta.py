@@ -3,8 +3,10 @@ def planta_schema(planta) -> dict:
     return {
         "id": planta["id"],
         "nom": planta["nom"],
-        "sensor_id": planta["sensor_id"]
+        "sensor_id": planta["sensor_id"],
+        "usuari_id": planta["usuari_id"] # Foreign key
     }
+
 
 def plantes_schema(plantes) -> list:
     return [planta_schema(p) for p in plantes]

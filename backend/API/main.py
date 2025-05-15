@@ -2,13 +2,15 @@ from typing import List
 from fastapi import FastAPI, HTTPException
 import db_plantes
 from db_plantes import db_client
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from schemas import humitat_sol, planta, sensors, usuaris
+from typing import Optional
+
 
 
 # Importo les querys
-from db_plantes import read_plantes, read_planta_id
-from db_plantes import get_usuaris, read_usuari_id
+from db_plantes import read_plantes, read_planta_id, read_plantes_by_usuari_id
+from db_plantes import get_usuaris, read_usuari_id, create_usuari, delete_usuari
 from db_plantes import read_sensors, read_sensors_id
 from db_plantes import get_humitat, read_humitatSol_id
 
@@ -26,6 +28,13 @@ class planta(BaseModel):
     id: int
     nom: str
     sensor_id: int
+    usuari_id: Optional[int]
+
+# Crear una nueva planta
+class PlantaCreate(BaseModel):
+    nom: str
+    sensor_id: int
+    usuari_id: int
 
 class sensors(BaseModel):
     sensor_id: int
@@ -33,13 +42,24 @@ class sensors(BaseModel):
     planta: str
     estat: str
 
-class usuaris(BaseModel):
-    id_usuari: int
+# Model de la taula usuris (el necessito igualment)
+class Usuari(BaseModel):
+    id: int
     nom: str
     cognom: str
     email: str
     contrasenya: str
-    sensor_id: int
+    sensor_id: Optional[int] = None
+
+
+# Creació per un usuari nou
+class UsuariCreate(BaseModel):
+    nom: str
+    cognom: str
+    email: str
+    contrasenya: str
+    sensor_id: Optional[int] = None
+
 # --------------------------------- /MODELS ---------------------------------
 
 
@@ -87,7 +107,6 @@ def read_all_plantes():
             detail=f"Error interno del servidor: {str(e)}"
         )
 
-
 # Llegim UNA planta en concret, passo l'id
 @app.get("/plantes/{id}", response_model=List[dict])
 def read_planta(id: int):
@@ -100,6 +119,19 @@ def read_planta(id: int):
 
     except Exception as e:
         return {"status": -1, "msg": f"Error ocurred: {e}"}
+
+# Endpoint que mostra les plantes per l'id del usuari
+@app.get("/usuaris/{usuari_id}/plantes", response_model=List[planta])
+def get_plantes_per_usuari(usuari_id: int):
+    plantes = read_plantes_by_usuari_id(usuari_id)
+
+    if isinstance(plantes, dict) and plantes.get("status") == -1:
+        raise HTTPException(status_code=500, detail=plantes["message"])
+
+    if plantes == []:
+        raise HTTPException(status_code=404, detail=f"No s'han trobat plantes per l'usuari amb ID {usuari_id}")
+
+    return plantes
 # ---------------- /SELECT PLANTES ----------------
 
 # ---------------- CREATE PLANTES ----------------
@@ -124,8 +156,7 @@ def llegir_usuaris():
     usuaris = get_usuaris()
     return {"usuaris": usuaris}
 
-
-# # Mostrem els Usuaris per id
+# Mostrem els Usuaris per id
 @app.get("/usuaris/{usuari_id}")
 def get_usuari_id(usuari_id: int):
     usuari = read_usuari_id(usuari_id)
@@ -138,14 +169,49 @@ def get_usuari_id(usuari_id: int):
     return {"usuari": usuari}
 # ---------------- /SELECT USUARIS ----------------
 
-
 # ----------------  CREATE USUARIS ----------------
+# @app.post("/usuaris")
+# def crear_nou_usuari(usuari: UsuariCreate):
+#     resultat = db_plantes.crear_usuari(
+#         nom=usuari.nom,
+#         cognom=usuari.cognom,
+#         email=usuari.email,
+#         contrasenya=usuari.contrasenya
+#     )
+
+#     if resultat.get("status") == -1:
+#         raise HTTPException(status_code=500, detail=resultat["message"])
+
+#     return resultat
+
+@app.post("/crear_usuari")
+def crear_nou_usuari(usuari: UsuariCreate):
+    resultat = db_plantes.create_usuari(usuari)
+
+    if isinstance(resultat, dict) and resultat.get("status") == -1:
+        raise HTTPException(status_code=500, detail=resultat["message"])
+
+    return {"message": "Usuari creat correctament", "id_usuari": resultat}
+
 
 # ---------------- /CREATE USUARIS ----------------
 
 # ---------------- UPDATE USUARIS ----------------
 
 # ---------------- /UPDATE USUARIS ----------------
+
+# ---------------- DELETE USUARIS ----------------
+@app.delete("/usuaris/{usuari_id}")
+def eliminar_usuari(usuari_id: int):
+    resultat = db_plantes.delete_usuari(usuari_id)
+
+    if resultat.get("status") == -1:
+        raise HTTPException(status_code=500, detail=resultat["message"])
+    elif resultat.get("status") == 0:
+        raise HTTPException(status_code=404, detail=resultat["message"])
+
+    return {"message": resultat["message"]}
+# ---------------- /DELETE USUARIS ----------------
 
 
 # --------------------------------- /USUARIS ---------------------------------
