@@ -6,8 +6,6 @@ from pydantic import BaseModel, EmailStr
 from schemas import humitat_sol, planta, sensors, usuaris
 from typing import Optional
 
-
-
 # Importo les querys
 from db_plantes import read_plantes, read_planta_id, read_plantes_by_usuari_id
 from db_plantes import get_usuaris, read_usuari_id, create_usuari, delete_usuari

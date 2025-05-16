@@ -120,39 +120,6 @@ def read_usuari_id(id):
 # ----------------------------------- /SELECT TAULA USUARIS -----------------------------------
 
 # ----------------------------------- CREAR USUARIS -----------------------------------
-# Per la creació de la contrasenya encriptada
-# from utils.security import hash_contrasenya
-# Crear un usuari nou a la base de dades
-# def crear_usuari(nom, cognom, email, contrasenya):
-#     try:
-#         conn = db_client()
-#         cursor = conn.cursor()
-
-#         # Encriptar la contrasenya abans de guardar-la
-#         contrasenya_hash = hash_contrasenya(contrasenya)
-
-#         # Inserir l'usuari nou
-#         query = "INSERT INTO usuaris (nom, cognom, email, contrasenya) VALUES (%s, %s, %s, %s)"
-#         cursor.execute(query, (nom, cognom, email, contrasenya_hash))
-
-#         conn.commit()
-
-#         return {
-#             "msg": "S'ha creat l'usuari correctament",
-#             "nom": nom,
-#             "email": email
-#         }
-
-#     except Exception as e:
-#         return {"status": -1, "message": str(e)}
-
-#     finally:
-#         if conn:
-#             cursor.close()
-#             conn.close()
-            
-# from .connexio import db_client  # o ajusta según tu estructura
-
 def create_usuari(usuari_data):
     try:
         conn = db_client()
