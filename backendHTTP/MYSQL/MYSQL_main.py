@@ -2,6 +2,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 
+from MYSQL_db_plantes import  check_credentials
+
 from MYSQL_db_plantes import (
     get_usuaris,
     get_usuari_by_id,
