@@ -151,3 +151,70 @@
 .btn-eliminar:hover {
     background: rgb(155, 7, 7);
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Adaptar contenedor de planta a columna */
+    .links.show {
+        display: flex;
+    }
+    .dins-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .foto-planta img {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 10px;
+    }
+
+    .info-planta {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .descripcio-planta p {
+        font-size: 18px;
+    }
+
+    .div-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-eliminar {
+        height: auto;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .titol-principal {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    /* Centrar footer */
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        padding: 20px;
+        height: auto;
+    }
+
+    .footer-img2, .footer-img1 {
+        width: 60%;
+    }
+
+    .footer-img2 img, .footer-img1 img {
+        width: 100%;
+        height: 50%;
+    }
+
+    .div-contacte {
+        width: 100%;
+    }
+    
+}

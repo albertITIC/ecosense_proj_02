@@ -1,50 +1,51 @@
-/* Fitxer css per importar sol la barra del menú de la pàgina inicial */
-/* Container per el menú */
-.menu{
+/* -------------------- MENÚ PRINCIPAL -------------------- */
+.menu {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     gap: 5%;
     background-color: #3E6606;
+    padding: 10px 5%;
 }
 
-/* Container de la foto */
+/* -------------------- FOTO LOGO -------------------- */
 .foto-inicial {
     width: 10%;
-    height: 20%;
+    min-width: 80px;
 }
 
-/* Tamany de la foto (resposive) */
-.foto-inicial img{
+.foto-inicial img {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
-a{
+/* -------------------- LINKS -------------------- */
+a {
     color: white;
-    font-size: 19px;
     font-size: 25px;
+    text-decoration: none;
 }
 
-/* Container del menú principal */
 .links {
     display: flex;
-    justify-content: baseline;
-    gap: 130px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
 }
 
 .links a {
     position: relative;
-    text-decoration: none; /* Eliminem el subratllat predeterminat */
 }
 
 .links a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -3px; /* Ajustem la distància del subratllat */
+    bottom: -3px;
     width: 0;
-    height: 2px; /* Gruix de la línia */
-    background-color: white; /* Color del subratllat */
+    height: 2px;
+    background-color: white;
     transition: width 0.3s ease-in-out;
 }
 
@@ -52,16 +53,15 @@ a{
     width: 100%;
 }
 
-
-/* container dels icones de la dreta (input, carret de la compra i login) */
-.icones{
+/* -------------------- ICONES -------------------- */
+.icones {
     display: flex;
-    justify-content: baseline;
     align-items: center;
-    gap: 7px;
-
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
-/* Animacions per les imatges */
+
 .icones img {
     transition: transform 0.3s ease-in-out;
 }
@@ -70,17 +70,19 @@ a{
     transform: scale(1.25);
 }
 
+/* -------------------- BUSCADOR -------------------- */
 .buscador {
     position: relative;
     display: flex;
     align-items: center;
-    width: 250px; /* Amplada del buscador */
+    width: 250px;
+    max-width: 100%;
 }
 
 .buscador-web {
     width: 100%;
     padding: 10px;
-    padding-right: 40px; /* Deixem espai per al botó */
+    padding-right: 40px;
     border: 2px solid white;
     border-radius: 20px;
     font-size: 16px;
@@ -97,35 +99,16 @@ a{
     color: #3E6606;
 }
 
-
-/* Configuració foto login */
-.log-in{
-    width: 100px;
+/* -------------------- ICONES EXTRA -------------------- */
+.log-in {
+    width: 60px;
 }
 
-/* Tamany de la foto login (responsive) */
-.log-in img{
-    width: 100%;
-    height: 100%;
+.carret-compra {
+    width: 60px;
 }
 
-/* Configuració foto carret de la compra */
-.carret-compra{
-    width: 90px;
-}
-
-/* Tamany de la foto carret de la compra (responsive) */
-.carret-compra img{
-    width: 100%;
-    height: 100%;
-}
-
-/* Controlar el tamany de la foto */
-.foto-main img{
-    width: 100%;
-    height: 84vh;
-}
-
+/* -------------------- BOTÓ SCROLL -------------------- */
 .btn-scroll {
     position: fixed;
     bottom: 20px;
@@ -138,7 +121,7 @@ a{
     border-radius: 50%;
     font-size: 24px;
     cursor: pointer;
-    display: none; /* Amagat per defecte */
+    display: none;
     transition: transform 0.3s ease-in-out, opacity 0.3s;
 }
 
@@ -147,25 +130,71 @@ a{
     opacity: 0.8;
 }
 
-/* SECCIÓ - FOOTER */
+/* -------------------- FOOTER -------------------- */
 .footer {
     background-color: #f3f3f3;
     display: flex;
-    padding: 1%;    
+    flex-wrap: wrap;
+    padding: 1%;
     justify-content: center;
     align-items: center;
-    height: 200px;    
+    gap: 20px;
+    height: auto;
 }
 
-/* Puedes especificar el tamaño de las imágenes por separado si lo prefieres */
-.footer-img2, .footer-img1 img{
+.footer-img2,
+.footer-img1 img {
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 50%;
-    height: 50%;
+    height: auto;
 }
 
-.div-contacte{
+.div-contacte {
     padding: 1%;
+}
+
+/* -------------------- RESPONSIVITAT -------------------- */
+@media screen and (max-width: 900px) {
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .icones {
+        justify-content: flex-start;
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .buscador {
+        width: 100%;
+    }
+
+    .foto-inicial {
+        width: 25%;
+    }
+
+    .log-in,
+    .carret-compra {
+        width: 40px;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-img1 img,
+    .footer-img2 img {
+        width: 80%;
+    }
 }

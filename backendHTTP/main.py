@@ -184,23 +184,10 @@ def login(data: LoginRequest):
     if resultat["status"] == -1:
         raise HTTPException(status_code=401, detail=str(resultat["message"]))
 
-    # Retornar el usuario sin la contraseña
-    return {
-        "msg": "Login correcte, benvingut",
-        "usuari": resultat["usuari"]
-    }
+    usuari = resultat["usuari"]
+    usuari.pop("contrasenya", None) # Trec la contrasenya
 
-# LOGIN 2
-# def login(data: LoginRequest):
-#     email = data.email  
-#     contrasenya = data.contrasenya
-
-#     resultat = check_credentials(email, contrasenya)
-
-#     if resultat["status"] == -1:
-#         raise HTTPException(status_code=401, detail=resultat["message"])
-
-#     return {"msg": "Login correcte", "usuari": resultat["usuari"]}
+    return {"msg": "Login correcte, benvingut", "usuari": usuari}
 
 # --------------------------------------------------------------  /USUARI --------------------------------------------------------------   
 

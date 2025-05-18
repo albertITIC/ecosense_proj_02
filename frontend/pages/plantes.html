@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +8,17 @@
     <link rel="stylesheet" href="../style/plantes.css">
 </head>
 <body>
-    <!-- Imatge de la capçalera (en blanc) -->
+    <!-- Imatge de la capçalera -->
     <div class="foto-capçalera">
         <img src="../img/header-retallat.png" alt="Foto logotip en blanc">
     </div>
 
-    <!-- Menú pàgina inicial -->
+    <!-- Menú -->
     <nav class="menu">
-        <!-- Foto principal -->
         <div class="foto-inicial">
             <img src="../img/header.png" alt="Logotip EOSENSE">
         </div>
 
-        <!-- Navegador del menú -->
         <div class="links">
             <a href="../index.html">Qui som</a>
             <a href="plantes.html">Plantes</a>
@@ -29,111 +27,33 @@
         </div>
 
         <div class="icones">
-            <!-- Buscador -->
             <div class="buscador">
                 <input type="text" class="buscador-web" placeholder="Cerca aquí...">
                 <button class="btn-buscador">🔍</button>
             </div>
-
-            <!-- Carret de la compra -->
             <div>
                 <img src="../img/carret-compra.png" alt="Carret de la compra" class="carret-compra">
             </div>
-            <!-- Iniciar sessió -->
             <a href="registrarse.html">
                 <img src="../img/login.png" alt="Iniciar sessió" class="log-in">
             </a>
         </div>
     </nav>
 
-    <!-- Títol de la pàgina -->
     <h1 class="titol-principal">LES MEVES PLANTES</h1>
 
-    <!-- Contingut de tota la pàgina -->
-    <section class="main">
-        <!-- Planta 1 -->
-        <section class="container-planta">
-            <section class="dins-container">
-                <!-- Imatge de la planta -->
-                <div class="foto-planta">
-                    <img src="../img/sofia-planta.png" alt="Imatge de la planta registrada">
-                </div>
+    <!-- Contingut principal -->
+    <div id="llista-plantes"></div>
 
-                <!-- Informació de la planta -->
-                <div class="info-planta">
-                    <div class="nom-planta">
-                        <h3>Nom de la planta:</h3> 
-                        <p>Sofia</p>
-                    </div>
 
-                    <div>
-                        <!-- Exemple -->
-                        <p class="id_planta">ID: 1</p>
-                    </div>
-
-                    <div class="descripcio-planta">
-                        <h3 class="titol-info-planta">Informació de la planta:</h3>                         
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eveniet mollitia harum sequi?
-                            Vero modi molestias mollitia explicabo asperiores voluptate velit
-                        </p>
-                    </div>
-                </div>
-                <!-- Botó per eliminar la planta -->
-                <div class="div-btn">
-                    <button class="btn-eliminar">Eliminar</button>
-                </div>
-            </section>
-        </section>
-
-        <!-- Planta 2 (Nueva) -->
-        <section class="container-planta">
-            <section class="dins-container">
-                <!-- Imatge de la planta -->
-                <div class="foto-planta">
-                    <img src="../img/ryan.jpg" alt="Imatge de la planta registrada">
-                </div>
-
-                <!-- Informació de la planta -->
-                 <!-- D'aquest apartat hauré de extreure l'informació del json (fer fetch) -->
-                <div class="info-planta">
-                    <div class="nom-planta">
-                        <h3>Nom de la planta:</h3> 
-                        <p>Ryan</p>
-                    </div>
-
-                    <div>
-                        <!-- Exemple -->
-                        <p class="id_planta">ID: 2</p>
-                    </div>
-
-                    <div class="descripcio-planta">
-                        <h3 class="titol-info-planta">Informació de la planta:</h3>                         
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eveniet mollitia harum sequi?
-                            Vero modi molestias mollitia explicabo asperiores voluptate velit
-                        </p>
-                    </div>
-                </div>
-                <!-- Botó per eliminar la planta -->
-                <div class="div-btn">
-                    <button class="btn-eliminar">Eliminar</button>
-                </div>
-            </section>
-        </section>
-    </section>
-    <br>
-    <!-- Caixa del footer -->
+    <!-- Footer -->
     <footer class="footer">
         <section class="div-contacte">
             <h3><b>Contacte:</b></h3>
-            <p><b>Instagram:</b> <br>
-                @ecosense</p>
-            <p><b>Gmail:</b>
-                 ecosense@gmail.com</p>
-            <p><b>Número de telf (+34):</b> <br>612 345 678</p>
+            <p><b>Instagram:</b> @ecosense</p>
+            <p><b>Gmail:</b> ecosense@gmail.com</p>
+            <p><b>Telf (+34):</b> 612 345 678</p>
         </section>
-
         <section class="footer-img2">
             <img src="../img/logo-horitzontal.png" alt="Logo Institut Tic de Barcelona">
         </section>
@@ -141,25 +61,6 @@
             <img src="../img/logo-ecosense-sinfondo.png" alt="Imatge del footer">
         </section>
     </footer>
-
-    <!-- Script per animar la foto del header -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const fotoCapcalera = document.querySelector(".foto-capçalera");
-
-            function mostrarFotoCapcalera() {
-                const rect = fotoCapcalera.getBoundingClientRect();
-                const alturaVisible = window.innerHeight || document.documentElement.clientHeight;
-
-                if (rect.top <= alturaVisible - 100) {
-                    fotoCapcalera.classList.add("visible");
-                }
-            }
-
-            window.addEventListener("scroll", mostrarFotoCapcalera);
-            mostrarFotoCapcalera(); // Executar per si ja és visible
-        });
-    </script>
-    <script src="../js/plantes.js"> </script>
+    <script src="../js/plantes.js"></script>
 </body>
 </html>

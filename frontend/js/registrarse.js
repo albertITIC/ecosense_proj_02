@@ -41,7 +41,7 @@ async function loginUsuari(e) {
 
         // Guardem info de l'usuari per usar-la després (ex: id)
         if (data.usuari && data.usuari.id) {
-            localStorage.setItem("usuari_id", data.usuari.id);
+            localStorage.setItem("usuari", JSON.stringify(data.usuari));
         }
 
         // Redirigir a plantes.html

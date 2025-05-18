@@ -18,3 +18,11 @@ window.addEventListener("scroll", () => {
         btnScroll.classList.remove("mostrar");
     }
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const links = document.querySelector(".links");
+
+    toggleBtn.addEventListener("click", () => {
+        links.classList.toggle("show");
+    });
+});
