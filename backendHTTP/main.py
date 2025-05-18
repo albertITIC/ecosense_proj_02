@@ -19,8 +19,18 @@ from routers.planta import planta_schema, plantes_schema
 
 from client import db_client
 from typing import List
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # O pots posar ["http://127.0.0.1:5501"] per més seguretat
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # BASE MODELS --------------------------------------------------------------
 # Humitat_sol
@@ -172,10 +182,13 @@ def login(data: LoginRequest):
     resultat = check_credentials(email, contrasenya)
 
     if resultat["status"] == -1:
-        print("Missatge d'error:", resultat["message"], type(resultat["message"]))
         raise HTTPException(status_code=401, detail=str(resultat["message"]))
 
-    return {"msg": "Login correcte, benvingut"}
+    # Retornar el usuario sin la contraseña
+    return {
+        "msg": "Login correcte, benvingut",
+        "usuari": resultat["usuari"]
+    }
 
 # LOGIN 2
 # def login(data: LoginRequest):

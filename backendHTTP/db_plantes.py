@@ -209,12 +209,14 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 
 # Funció per el LOGIN
+from psycopg2.extras import RealDictCursor
+
 def check_credentials(email: str, contrasenya: str):
-    conn = psycopg2.connect(...)
-    cursor = conn.cursor(cursor_factory=RealDictCursor)
+    conn = None
+    cursor = None
     try:
         conn = db_client()
-        cursor = conn.cursor(dictionary=True)
+        cursor = conn.cursor(cursor_factory=RealDictCursor)
 
         cursor.execute("SELECT * FROM usuaris WHERE email = %s", (email,))
         usuari = cursor.fetchone()
@@ -222,10 +224,11 @@ def check_credentials(email: str, contrasenya: str):
         if usuari is None:
             return {"status": -1, "message": "Usuari no trobat"}
 
+        from security import verify_password
         if not verify_password(contrasenya, usuari["contrasenya"]):
             return {"status": -1, "message": "Contrasenya incorrecta"}
 
-        usuari.pop("contrasenya", None)  
+        usuari.pop("contrasenya", None)
         return {"status": 1, "usuari": usuari}
 
     except Exception as e:
