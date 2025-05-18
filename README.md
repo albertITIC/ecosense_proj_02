@@ -12,11 +12,10 @@
 ![Inici.png](img.png)
 
 #### Composició de l'API:
-blablablabla
 
 
 #### Fitxer docker (configuració):
-blablablabla
+
 ![Configuracio ficher docker-compose.yml](image-3.png)
 
 #### Aixecar container (inici):
